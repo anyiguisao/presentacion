@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Previsualizar Imágenes</title>
+<style>
+  .image-preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .image-preview img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="image-preview">
+    <img id="imagePreview1" >
+    <input type="file" id="fileInput1" onchange="previewImage(1)">
+  </div>
+  
+  <div class="image-preview">
+    <img id="imagePreview2"  >
+    <input type="file" id="fileInput2" onchange="previewImage(2)">
+  </div>
+  
+  <div class="image-preview">
+    <img id="imagePreview3"  >
+    <input type="file" id="fileInput3" onchange="previewImage(3)">
+  </div>
+
+  <script>
+    function previewImage(inputNumber) {
+      const fileInput = document.getElementById(`fileInput${inputNumber}`);
+      const imagePreview = document.getElementById(`imagePreview${inputNumber}`);
+      const file = fileInput.files[0];
+      
+      if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+        };
+        
+        reader.readAsDataURL(file);
+      } else {
+        imagePreview.src = "#";
+      }
+    }
+  </script>
+</body>
+</html>

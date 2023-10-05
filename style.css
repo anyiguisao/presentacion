@@ -1,0 +1,28 @@
+input {
+  margin-top: 1rem;
+ border-radius: 8;
+}
+
+input::file-selector-button {
+  font-weight: bold;
+  color: dodgerblue;
+  padding: 0.5em;
+  border: thin solid grey;
+  border-radius: 3px;
+}
+
+@supports(object-fit:cover){
+
+  .item img{
+  
+  height: 100%;
+  
+  object-fit:cover;
+  
+  object-position:center center;}
+  
+  }
+
+
+
+
